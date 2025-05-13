@@ -33,7 +33,7 @@ export function informaCEP(){
 }
 
 export function informaCidade(){
-    acao.facaEm('#city').type('cidade')
+    acao.facaEm('#city').type('Cidade')
 }
 
 export function selecionaOcupacao(){
