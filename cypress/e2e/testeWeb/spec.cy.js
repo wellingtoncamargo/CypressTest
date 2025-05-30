@@ -1,50 +1,46 @@
-import * as veiculo from '../../support/pages/cadastroVeiculo.js'
-import * as segurado from '../../support/pages/cadastroSegurado.js'
-describe('Acessando site Seguradora', () => {
-  before('Validando Texto', () => {
-    cy.visit('https://sampleapp.tricentis.com/101/app.php')
-    validandoTexto('#entervehicledata', 'Enter Vehicle Data')
+import * as login from '../../support/pages/login.js'
+import * as cadastro from '../../support/pages/cadastroNovoUsuario.js'
+
+
+describe('Acessando site Serverest', () => {
+  beforeEach(() => {
+    cy.visit('https://front.serverest.dev/')
   })
 
-  it('Realizando Cadastro do Veiculo', () => {
-    veiculo.selecionaMarca()
-    veiculo.selecionaModelo()
-    veiculo.informaCilindrada()
-    veiculo.informaPerformance()
-    veiculo.informaDataManutencao()
-    veiculo.informaAcentosCarro()
-    veiculo.selecionaDirecaoVolante()
-    veiculo.informaAcentosMoto()
-    veiculo.selecionaCombustivel()
-    veiculo.informaCarga()
-    veiculo.informaPesoTotal()
-    veiculo.informaListaPreco()
-    veiculo.informaNumeroLicenca()
-    veiculo.informaQuilometragem()
-    veiculo.clicaBotaoProximo()
-    
+  describe('Cadastro de Usuário', () => {
+    it('Realizando cadastro de um novo usuário', () => {
+      login.validaTelaLogin()
+      login.clickBotaoSeCadastrar()
+      cadastro.validaTelaCadastro()
+      cadastro.clicaNomeUsuario()
+      login.informaEmail()
+      login.informarSenha()
+      cadastro.clicaCheckAdministrador()
+      cadastro.clicaBotaoCadastrar()
+      cadastro.validaMensagem('Cadastro realizado com sucesso')
+    })
+
+    it('Tentando cadastrar um usuário duplicado', () => {
+      login.validaTelaLogin()
+      login.clickBotaoSeCadastrar()
+      cadastro.validaTelaCadastro()
+      cadastro.clicaNomeUsuario()
+      login.informaEmail()
+      login.informarSenha()
+      cadastro.clicaCheckAdministrador()
+      cadastro.clicaBotaoCadastrar()
+      cadastro.validaMensagem('Este email já está sendo usado')
+    })
   })
-  
-  it('Realizando Cadastro do Assegurado', () => {
-    cy.visit('https://sampleapp.tricentis.com/101/app.php')
-    segurado.clicaDadosSegurado()
-    segurado.informaNome()
-    segurado.informaSobrenome()
-    segurado.informaAniversario()
-    segurado.selecionaSexo()
-    segurado.informaEndereco()
-    segurado.informaPais()
-    segurado.informaCEP()
-    segurado.informaCidade()
-    segurado.selecionaOcupacao()
-    segurado.informaHobbies()
-    segurado.informaFoto()
-    segurado.clicaBotaoProximo()    
+
+  describe('Login e Sessão', () => {
+    it('usuario-logado', () => {
+      login.validaTelaLogin()
+      login.informaEmail()
+      login.informarSenha()
+      login.clickBotaoEntrar()
+      cadastro.validaTelaHome()
+    })
   })
+
 })
-
-
-
-function validandoTexto(locator, text){
-  cy.get(locator).should('contain.text', text)
-}

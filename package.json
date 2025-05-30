@@ -1,4 +1,21 @@
 {
+  "name": "CypressTest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "cy:open": "cypress open"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wellingtoncamargo/CypressTest.git"
+  },
+  "keywords": [],
+  "author": "Wellington Camargo",
+  "license": "ISC",
+  "homepage": "https://github.com/wellingtoncamargo/CypressTest#readme",
   "devDependencies": {
     "cypress": "^14.3.3"
   }
