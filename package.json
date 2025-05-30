@@ -10,12 +10,12 @@
 
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eliseugabrielsilva/api-trello-test.git"
+    "url": "git+https://github.com/wellingtoncamargo/CypressTest.git"
   },
   "keywords": [],
   "author": "Wellington Camargo",
   "license": "ISC",
-  "homepage": "https://github.com/eliseugabrielsilva/api-trello-test#readme",
+  "homepage": "https://github.com/wellingtoncamargo/CypressTest#readme",
   "devDependencies": {
     "cypress": "^14.3.3"
   }
