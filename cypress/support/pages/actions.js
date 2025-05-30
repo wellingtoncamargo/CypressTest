@@ -19,16 +19,6 @@ export function validandoTexto(locator, text){
   cy.get(locator).should('contain.text', text)
 }
 
-export function gerarDataAleatoria(anoInicio, anoFim) {
-  const inicio = new Date(`${anoInicio}-01-01`).getTime()
-  const fim = new Date(`${anoFim}-12-31`).getTime()
-
-  const timestampAleatorio = Math.floor(Math.random() * (fim - inicio + 1)) + inicio
-  const data = new Date(timestampAleatorio)
-
-  const dia = String(data.getDate()).padStart(2, '0')
-  const mes = String(data.getMonth() + 1).padStart(2, '0') // getMonth() vai de 0 a 11
-  const ano = data.getFullYear()
-
-  return `${mes}/${dia}/${ano}`
+export function validandoMensagem(text){
+  cy.contains(text)
 }
