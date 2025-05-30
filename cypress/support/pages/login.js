@@ -1,4 +1,3 @@
-import * as util from '../utils.js'
 import * as acao from './actions.js'
 
 export function informaEmail(){
